@@ -7,7 +7,7 @@ public class Task2 {
 
         Human[] humans = new Human[3];
 
-        humans[0] = new Human("Aldous", "Huxley" , 38);
+        humans[0] = new Human("Aldous", "Huxley", 38);
         humans[1] = new Human("Kenneth", "Kesey", 27);
         humans[2] = new Human("Harper", "Lee", 34);
 
@@ -20,10 +20,15 @@ public class Task2 {
     }
 
     private static void sort(Human[] humans) {
-        for (int i = 0; i < humans.length -1; i++) {
-            Human temp = humans[i];
-            humans[i] = humans[i + 1];
-            humans[i + 1] = temp;
+        for (int i = 0; i < humans.length - 1; i++) {
+            for (int j = 0; j < humans.length - i - 1; j++) {
+                if (humans[j].getAge() > humans[j + 1].getAge()) {
+                    Human temp = humans[j];
+                    humans[j] = humans[j + 1];
+                    humans[j + 1] = temp;
+                }
+            }
+
         }
     }
 }
