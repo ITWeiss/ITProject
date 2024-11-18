@@ -1,9 +1,9 @@
-package Lesson6;
+package Task1;
 
 public class WheeledTransport {
 
-    int quantityWheels;
-    int speed;
+    private int quantityWheels;
+    private int speed;
 
     public WheeledTransport(int quantityWheels, int speed) {
         this.quantityWheels = quantityWheels;
@@ -27,7 +27,7 @@ public class WheeledTransport {
     }
 
     public void service() {
-        String commonStr = String.format("Количество колес: %d.", quantityWheels);
+        String commonStr = String.format("Обслужено колёс: %d.", quantityWheels);
         System.out.println(commonStr);
     }
 }

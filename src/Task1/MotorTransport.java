@@ -1,4 +1,4 @@
-package Lesson6;
+package Task1;
 
 public class MotorTransport extends WheeledTransport {
 
@@ -8,7 +8,6 @@ public class MotorTransport extends WheeledTransport {
         super(quantityWheels, speed);
         this.typeEngine = typeEngine;
     }
-
 
     public String getTypeEngine() {
         return typeEngine;
@@ -20,8 +19,9 @@ public class MotorTransport extends WheeledTransport {
 
     @Override
     public void service() {
+        super.service();
         String secondStr = String.format("Тип двигателя: %s.", typeEngine);
         System.out.println(secondStr);
-        super.service();
+
     }
 }

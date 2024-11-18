@@ -1,4 +1,4 @@
-package Lesson6;
+package Task1;
 
 public class Bicycle extends WheeledTransport {
 
@@ -9,7 +9,7 @@ public class Bicycle extends WheeledTransport {
         this.typeBicycle = typeBicycle;
     }
 
-        public String getTypeBicycle() {
+    public String getTypeBicycle() {
         return typeBicycle;
     }
 
@@ -19,9 +19,9 @@ public class Bicycle extends WheeledTransport {
 
     @Override
     public void service() {
+        super.service();
         String firstStr = String.format("Обслужен велосипед тип: %s.", typeBicycle);
         System.out.println(firstStr);
-        super.service();
         System.out.println();
     }
 }

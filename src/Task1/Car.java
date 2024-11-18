@@ -1,20 +1,19 @@
-package Lesson6;
+package Task1;
 
 public class Car extends MotorTransport {
 
-    private String mark;
+    private String brand;
     private String model;
 
     public Car(int quantityWheels, int speed, String typeEngine, String mark, String model) {
         super(quantityWheels, speed, typeEngine);
-        this.mark = mark;
+        this.brand = mark;
         this.model = model;
 
     }
 
-
     public void setMark(String mark) {
-        this.mark = mark;
+        this.brand = mark;
     }
 
     public void setModel(String model) {
@@ -22,7 +21,7 @@ public class Car extends MotorTransport {
     }
 
     public String getMark() {
-        return mark;
+        return brand;
     }
 
     public String getModel() {
@@ -31,9 +30,9 @@ public class Car extends MotorTransport {
 
     @Override
     public void service() {
-        String firstStr = String.format("Обслужен автомобиль: %s %s.", mark, model);
-        System.out.println(firstStr);
         super.service();
+        String firstStr = String.format("Обслужен автомобиль: %s %s.", brand, model);
+        System.out.println(firstStr);
         System.out.println();
     }
 

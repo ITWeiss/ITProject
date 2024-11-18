@@ -1,4 +1,4 @@
-package Lesson6;
+package Task2;
 
 public class Task2 {
     public static void main(String[] args) {
@@ -6,8 +6,6 @@ public class Task2 {
         Employee[] employees = {
                 new Manager("Alex", 82400), new Developer("John", 120000), new Developer("Sam", 144500)
         };
-
-
 
         printEmployees(employees);
 

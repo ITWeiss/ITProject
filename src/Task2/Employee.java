@@ -1,9 +1,9 @@
-package Lesson6;
+package Task2;
 
 public class Employee {
 
     private String name;
-    private int salary;
+    protected int salary;
 
     public Employee(String name, int salary) {
         this.name = name;
@@ -24,7 +24,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        String str1 = String.format("Employee's name: %s. Salary: %d", name, salary);
-        return str1;
+        return String.format("Employee's name: %s. Salary: %d", name, salary);
     }
 }

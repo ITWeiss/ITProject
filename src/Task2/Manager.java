@@ -1,13 +1,13 @@
-package Lesson6;
+package Task2;
 
-public class Manager extends Employee{
+public class Manager extends Employee {
     public Manager(String name, int salary) {
         super(name, salary);
     }
 
     @Override
     public int getSalary() {
-        return super.getSalary();
+        return salary;
     }
 
     @Override

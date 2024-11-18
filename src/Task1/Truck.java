@@ -1,4 +1,4 @@
-package Lesson6;
+package Task1;
 
 public class Truck extends MotorTransport {
 
@@ -19,9 +19,9 @@ public class Truck extends MotorTransport {
 
     @Override
     public void service() {
+        super.service();
         String firstStr = String.format("Обслужен грузовик грузоподъемностью: %d.", payload);
         System.out.println(firstStr);
-        super.service();
         System.out.println();
     }
 }
