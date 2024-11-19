@@ -1,4 +1,4 @@
-package Task2;
+package Lesson6.Task2;
 
 public class Manager extends Employee {
     public Manager(String name, int salary) {

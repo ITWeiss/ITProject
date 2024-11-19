@@ -1,4 +1,4 @@
-package Task2;
+package Lesson6.Task2;
 
 public class Developer extends Employee {
     public Developer(String name, int salary) {
