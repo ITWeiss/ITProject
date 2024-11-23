@@ -39,6 +39,8 @@ public class Task1 {
         } else if (typeTransport instanceof Truck truck) {
             truck.service();
             truck.status();
+        } else {
+            System.out.println("The object type is not defined.\n");
         }
     }
 
