@@ -13,7 +13,4 @@ public abstract class Employee implements Payable {
     public String getName() {
         return name;
     }
-
-    @Override
-    public abstract double calculatePayment();
 }
