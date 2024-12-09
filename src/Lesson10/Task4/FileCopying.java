@@ -23,14 +23,8 @@ public class FileCopying {
 
     public static void copyFileContent(String sourcePath, String targetPath) {
 
-        FileReader fileReader = null;
-        FileWriter fileWriter = null;
-
-        try {
-            // Создаем FileReader для чтения исходного файла
-            fileReader = new FileReader(sourcePath);
-            // Создаем FileWriter для записи в целевой файл (если файл не существует, он будет создан)
-            fileWriter = new FileWriter(targetPath);
+        try (FileReader fileReader = new FileReader(sourcePath);
+             FileWriter fileWriter = new FileWriter(targetPath)) {
             int data;
             while ((data = fileReader.read()) != -1) {
                 fileWriter.write(data);
@@ -40,19 +34,7 @@ public class FileCopying {
             System.out.println("File not found: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("Input/Output Error: " + e.getMessage());
-        } finally {
-            // Закрываем потоки в блоке finally
-            try {
-                if (fileReader != null) {
-                    fileReader.close();
-                }
-                if (fileWriter != null) {
-                    fileWriter.close();
-                }
-            } catch (IOException e) {
-                System.err.println("Error when closing threads: " + e.getMessage());
-            }
-
         }
     }
 }
+

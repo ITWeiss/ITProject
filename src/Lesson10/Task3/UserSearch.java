@@ -6,7 +6,7 @@ public class UserSearch {
         System.out.printf("Search for user ID %d.\n", id);
         if (id < 0) {
             // Если идентификатор меньше 0, выбрасываем исключение
-            throw new UserNotFoundException("user not found.\n\n");
+            throw new UserNotFoundException(String.format("User with id = %d not found.\n\n", id));
         }
         // Имитация успешного поиска пользователя
         System.out.println("User found.\n");
