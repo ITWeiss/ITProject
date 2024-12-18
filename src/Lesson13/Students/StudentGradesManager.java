@@ -4,7 +4,7 @@ import java.util.*;
 
 public class StudentGradesManager {
 
-    private static final Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
     private static final Map<String, List<Integer>> students = new HashMap<>();
 
     public static void main(String[] args) {
@@ -64,25 +64,26 @@ public class StudentGradesManager {
         System.out.print("Insert student's name: ");
         String studentName = scanner.nextLine();
 
-        if (!students.containsKey(studentName)) {
-            System.out.println("Student with that name is not on the list\n.");
-        } else {
+        if (students.containsKey(studentName)) {
             System.out.print("Insert grade: ");
             int grade = scanner.nextInt();
             students.get(studentName).add(grade);
             System.out.println("Grade added.");
+
+        } else {
+            System.out.println("Student with that name is not on the list\n.");
         }
     }
 
     private static void showStudentsAndAverageGrades() {
         if (students.isEmpty()) {
             System.out.println("There are no students.");
-        } else {
-            System.out.println("Students list and their average grades:");
-            for (Map.Entry<String, List<Integer>> entry : students.entrySet()) {
-                double average = calculateAverage(entry.getValue());
-                System.out.printf("%s: %.2f%n", entry.getKey(), average);
-            }
+            return;
+        }
+        System.out.println("Students list and their average grades:");
+        for (Map.Entry<String, List<Integer>> entry : students.entrySet()) {
+            double average = calculateAverage(entry.getValue());
+            System.out.printf("%s: %.2f%n", entry.getKey(), average);
         }
     }
 

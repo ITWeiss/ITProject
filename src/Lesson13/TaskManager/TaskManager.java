@@ -12,7 +12,7 @@ public class TaskManager {
         int choice;
         do {
             showMenu();
-             choice = getUserInput();
+            choice = getUserInput();
 
             switch (choice) {
                 case 1:
@@ -62,62 +62,62 @@ public class TaskManager {
     private static void viewTasks() {
         if (tasks.isEmpty()) {
             System.out.println("Task list is empty.");
-        } else {
-            System.out.println("Task list:");
-            for (int i = 0; i < tasks.size(); i++) {
-                int number = i + 1;
-                System.out.printf("%d. %s\n", number, tasks.get(i));
-            }
+            return;
+        }
+        System.out.println("Task list:");
+        for (int i = 0; i < tasks.size(); i++) {
+            int number = i + 1;
+            System.out.printf("%d. %s\n", number, tasks.get(i));
         }
     }
 
     private static void removeTask() {
         if (tasks.isEmpty()) {
             System.out.println("Task list is empty.");
+            return;
+        }
+        viewTasks();
+        System.out.print("Insert task's index to remove: ");
+        int index = scanner.nextInt() - 1;
+        if (index >= 0 && index < tasks.size()) {
+            tasks.remove(index);
+            System.out.println("Task remove.");
         } else {
-            viewTasks();
-            System.out.print("Insert task's index to remove: ");
-            int index = scanner.nextInt() - 1;
-            if (index >= 0 && index < tasks.size()) {
-                tasks.remove(index);
-                System.out.println("Task remove.");
-            } else {
-                System.out.println("Incorrect index.");
-            }
+            System.out.println("Incorrect index.");
         }
     }
 
     private static void moveTask() {
         if (tasks.isEmpty()) {
             System.out.println("Task list is empty.");
-        } else {
-            viewTasks();
-            System.out.print("Insert task's index to move: ");
-            int index = scanner.nextInt() - 1;
-            if (index >= 0 && index < tasks.size()) {
-                System.out.print("Insert the direction of movement (up/down): ");
-                scanner.nextLine(); // Очищаем буфер после ввода числа
-                String direction = scanner.nextLine();
-                if ("up".equalsIgnoreCase(direction)) {
-                    if (index > 0) {
-                        swapTasks(index, index - 1);
-                        System.out.println("Task moved up.");
-                    } else {
-                        System.out.println("You cannot move the task above the first position.");
-                    }
-                } else if ("down".equalsIgnoreCase(direction)) {
-                    if (index < tasks.size() - 1) {
-                        swapTasks(index, index + 1);
-                        System.out.println("Task moved down.");
-                    } else {
-                        System.out.println("You cannot move the task above the last position.");
-                    }
-                } else {
-                    System.out.println("Incorrect direction of movement.");
-                }
-            } else {
-                System.out.println("Incorrect index.");
+            return;
+        }
+        viewTasks();
+        System.out.print("Insert task's index to move: ");
+        int index = scanner.nextInt() - 1;
+        if (index < 0 || index >= tasks.size()) {
+            System.out.println("Incorrect index.");
+            return;
+        }
+        System.out.print("Insert the direction of movement (up/down): ");
+        scanner.nextLine();
+        String direction = scanner.nextLine();
+        if ("up".equalsIgnoreCase(direction)) {
+            if (index == 0) {
+                System.out.println("You cannot move the task above the first position.");
+                return;
             }
+            swapTasks(index, index - 1);
+            System.out.println("Task moved up.");
+        } else if ("down".equalsIgnoreCase(direction)) {
+            if (index == tasks.size() - 1) {
+                System.out.println("You cannot move the task above the last position.");
+                return;
+            }
+            swapTasks(index, index + 1);
+            System.out.println("Task moved down.");
+        } else {
+            System.out.println("Incorrect direction of movement.");
         }
     }
 

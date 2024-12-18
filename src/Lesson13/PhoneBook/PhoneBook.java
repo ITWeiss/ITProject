@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class PhoneBook {
-    static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
     static HashMap<String, String> contacts = new HashMap<>();
 
     public static void main(String[] args) {
@@ -24,6 +24,7 @@ public class PhoneBook {
                 default -> System.out.println("Wrong choice. Try again.");
             }
         } while (!choice.equals("5"));
+        scanner.close();
     }
 
     public static void showMenu() {

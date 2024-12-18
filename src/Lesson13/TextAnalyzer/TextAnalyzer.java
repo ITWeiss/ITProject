@@ -7,7 +7,7 @@ import java.util.*;
 public class TextAnalyzer {
 
     public static void main(String[] args) {
-        HashMap<String, Integer> wordCountMap = new HashMap<>();
+        Map<String, Integer> wordCountMap = new HashMap<>();
         Set<String> uniqueWords = new HashSet<>();
 
         if (args.length > 0) {
@@ -22,15 +22,10 @@ public class TextAnalyzer {
             System.out.println(word);
         }
 
-        System.out.println("\nFrequency of occurrence of words:");
-        for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-
-        findMostFrequentWords(wordCountMap);
+        printMostFrequentWords(wordCountMap);
     }
 
-    private static void readFromFile(String fileName, HashMap<String, Integer> wordCountMap, Set<String> uniqueWords) {
+    private static void readFromFile(String fileName, Map<String, Integer> wordCountMap, Set<String> uniqueWords) {
         try (Scanner scanner = new Scanner(new File(fileName))) {
             while (scanner.hasNext()) {
                 String word = scanner.next().toLowerCase();
@@ -45,7 +40,7 @@ public class TextAnalyzer {
         }
     }
 
-    private static void readFromConsole(HashMap<String, Integer> wordCountMap, Set<String> uniqueWords) {
+    private static void readFromConsole(Map<String, Integer> wordCountMap, Set<String> uniqueWords) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Insert the text. Enter 'exit' to complete:");
         while (true) {
@@ -62,15 +57,24 @@ public class TextAnalyzer {
                 }
             }
         }
+        scanner.close();
     }
 
-    private static void findMostFrequentWords(HashMap<String, Integer> wordCountMap) {
-        int maxFrequency = Collections.max(wordCountMap.values());
-        System.out.println("\nThe most common words:");
+    private static void printMostFrequentWords(Map<String, Integer> wordCountMap) {
+
+        int maxCount = 0;
+        String maxWord = "";
+
+        System.out.println("\nFrequency of occurrence of words:");
         for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
-            if (entry.getValue() == maxFrequency) {
-                System.out.println(entry.getKey());
+            if (entry.getValue() > maxCount) {
+                maxCount = entry.getValue();
+                maxWord = entry.getKey();
             }
+            System.out.printf("%s: %d\n", entry.getKey(), entry.getValue());
         }
+
+        System.out.printf("\nThe most common words: \"%s\", meets %d times.", maxWord, maxCount);
     }
 }
+
