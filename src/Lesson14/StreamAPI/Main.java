@@ -21,7 +21,7 @@ public class Main {
 
         // Младше 18 лет
         List<Person> filtered = people.stream()
-                .filter(person -> person.getAge() >= 18)
+                .filter(person -> person.getAge() < 18)
                 .toList();
 
         filtered.forEach(System.out::println);

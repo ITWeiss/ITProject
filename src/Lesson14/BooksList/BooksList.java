@@ -46,9 +46,9 @@ public class BooksList {
 
         System.out.println(sum);
 
-        // Список книг стомостью меньше 500
+        // Список книг стомостью больше 500
         List<Book> filteredPriceLess500 = books.stream()
-                .filter(book -> book.getPrice() < 500)
+                .filter(book -> book.getPrice() > 500)
                 .collect(Collectors.toList());
 
         System.out.println(filteredPriceLess500);
